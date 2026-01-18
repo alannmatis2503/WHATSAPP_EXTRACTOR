@@ -8,6 +8,13 @@ from collections import Counter
 import zipfile
 import io
 
+def is_phone_number(name):
+    """Vérifie si le nom est un numéro de téléphone (contact non enregistré)"""
+    # Pattern pour détecter les numéros de téléphone
+    # Exemples: +237 6 90 99 37 08, +237690993708, +33 6 12 34 56 78
+    phone_pattern = r'^\+?\d[\d\s\-\.]{6,}$'
+    return bool(re.match(phone_pattern, name.strip()))
+
 # Configuration de la page
 st.set_page_config(
     page_title="WhatsApp Analytics",
@@ -318,7 +325,19 @@ if uploaded_file:
                     st.markdown("### 🎯 Filtres")
                     st.markdown("---")
                     
+                    # Option pour exclure les numéros inconnus
+                    exclude_unknown = st.checkbox(
+                        "📱 Contacts uniquement",
+                        value=False,
+                        help="Exclure les numéros non enregistrés (+237...)"
+                    )
+                    
                     all_senders = sorted(df['sender'].unique())
+                    
+                    # Filtrer les numéros si demandé
+                    if exclude_unknown:
+                        all_senders = [s for s in all_senders if not is_phone_number(s)]
+                    
                     selected_senders = st.multiselect(
                         "👥 Participants",
                         options=all_senders,
