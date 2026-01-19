@@ -394,8 +394,8 @@ if uploaded_files:
                     
                     fig.update_layout(
                         title=dict(font=dict(family='Poppins', size=20, color='#2d3748'), x=0.5),
-                        xaxis=dict(title='Nombre de messages', titlefont=dict(family='Inter', size=14, color='#718096')),
-                        yaxis=dict(title='', tickfont=dict(family='Inter', size=11, color='#4a5568')),
+                        xaxis=dict(title=dict(text='Nombre de messages', font=dict(family='Inter', size=14, color='#718096'))),
+                        yaxis=dict(title=dict(text=''), tickfont=dict(family='Inter', size=11, color='#4a5568')),
                         legend=dict(title='Groupe', font=dict(family='Inter')),
                         plot_bgcolor='white',
                         paper_bgcolor='rgba(0,0,0,0)',
@@ -531,8 +531,8 @@ if uploaded_files:
                     
                     fig_timeline.update_layout(
                         title=dict(font=dict(family='Poppins', size=18, color='#2d3748'), x=0.5),
-                        xaxis=dict(title='Date', titlefont=dict(family='Inter', size=14, color='#718096')),
-                        yaxis=dict(title='Messages', titlefont=dict(family='Inter', size=14, color='#718096')),
+                        xaxis=dict(title=dict(text='Date', font=dict(family='Inter', size=14, color='#718096'))),
+                        yaxis=dict(title=dict(text='Messages', font=dict(family='Inter', size=14, color='#718096'))),
                         legend=dict(title='Groupe', font=dict(family='Inter')),
                         plot_bgcolor='white',
                         paper_bgcolor='rgba(0,0,0,0)',
